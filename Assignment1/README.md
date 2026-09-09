@@ -1,7 +1,7 @@
 # Epidemiological Model Assignment — Parameter Exploration
 
 **Course**: KEN3170 — Multi-scale modeling of biological systems
-**Group number**: [X]
+**Group number**: 12
 
 ---
 
@@ -29,10 +29,9 @@ Solves the SIRD ODE system (`sird_model`) with `scipy.integrate.odeint` for each
 ---
 
 ## 4. Part 3 — Policy recommendations
-- **4.1 Parameter impact analysis** — how beta, gamma, and mu each drive epidemic size, timing, and lethality.
-- **4.2 Intervention analysis** — real interventions mapped to each parameter (distancing/masking → beta, treatment/care speed → gamma, hospital capacity/triage → mu, vaccination → all three).
-- **4.3 Real-world application** — how these levers should be sequenced/prioritised for high- vs low-transmission outbreaks.
-
+- **3.1 Parameter impact analysis** — how beta, gamma, and mu each drive epidemic size, timing, and lethality.
+- **3.2 Intervention analysis** — real interventions mapped to each parameter (distancing/masking → beta, treatment/care speed → gamma, hospital capacity/triage → mu, vaccination → all three).
+- **3.3 Real-world application** COVID-19 from the lecture, remdesivir treatment, and trial evidence for shorter recovery time linked to gamma.
 ---
 
 ## 5. Conclusions
