@@ -15,7 +15,7 @@
 
 ### Part 1
 
-TODO!!
+The E. coli model is loaded with cobra, alongside reaction activity data. Visualisation is done in Escher with both explanations written below each code snippet.
 
 ### Part 2 - Implementation of maximal reaction activity data
 
@@ -37,4 +37,4 @@ The glucose uptake bound was increased from 1 to 15 mmol/gDW/h in steps of 0.1 i
 
 ## Conclusions
 
-Put your conclusions here
+The notebook loads and visualises the E. coli model and gene-expression data, then use it to set reaction limits and perform FBA. It also examines how manipulating the glucose uptake affects biomass production.
