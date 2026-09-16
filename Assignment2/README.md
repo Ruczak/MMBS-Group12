@@ -29,7 +29,7 @@ TODO!!
 
 ### Part 4
 
-TODO!!
+The glucose uptake bound was increased from 1 to 15 mmol/gDW/h in steps of 0.1 inside a `while`-loop, running FBA at each step and plotting the growth rate with `matplotlib`. The stored solutions were then used to check which reactions hit their activity bounds and which exchange fluxes change between the segments of the curve.
 
 ## Conclusions
 
