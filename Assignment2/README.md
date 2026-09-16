@@ -23,9 +23,13 @@ All instructions were implemented inside a single `for`-loop. Flux boundaries of
 
 The transformed data was displayed using `pandas` library.
 
-### Part 3
+### Part 3 - Biomass production
 
-TODO!!
+We first ran flux balance analysis (FBA) with the reaction activity limits from Part 2 to find the highest possible growth rate. The model reached **0.8733 h^-1**, using **10.62 mmol/gDW/h** of glucose.
+
+We then limited glucose uptake to **5 mmol/gDW/h** by setting the lower bound of `EX_glc__D_e` to `-5`. The value is negative because glucose enters the cell. This sets the maximum allowed uptake, but does not force the cell to use all of it.
+
+After running FBA again, the growth rate dropped to **0.4156 h^-1**, and the model used all the allowed glucose. With less glucose available, the cell could produce less biomass, even though the enzyme activity limits stayed the same.
 
 ### Part 4
 
