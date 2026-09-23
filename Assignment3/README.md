@@ -38,6 +38,16 @@ p53 = DNA_damage AND (NOT MDM2)
 
 Thus, `p21 = p53` become both 0, since `MYC = MDM2` is always 1, which then causes `NOT MDM2` conditions to always be false. This feedback loop causes two stable steady-states, one with DNA damage, the other not.
 
+### Mutation C: MDM2 overexpression
+
+MDM2 is set to always ON. MDM2 blocks p53 so p53 never turns on even with DNA damage.
+
+The stressed cell keeps growing instead of dying, the other two scenarios are the same as normal.
+
+Cancer-like states go from 8/256 (3.125%) to 128/256 (50%) and there are only 2 attractors because the death one is gone.
+
+This is the same as Mutation A since MDM2 is the only thing turning p53 off in the rules, so MDM2 always on works out the same as p53 always off. The stressed cell just takes a few more steps to settle (7 instead of 4) because p53 turns on for one step before MDM2 blocks it.
+
 ### Mutation D: apoptosis evasion (Death suppressed)
 
 We switch Death OFF permanently. All three scenarios stay the same as normal, except the stressed cell no longer dies — it now arrests instead.
@@ -56,6 +66,7 @@ Losing Death alone removes the ability to die, but not the brake on growth — s
 
 1. All nodes update together, while real cell processes take different amounts of time.
 2. We only analyse an important, but limited part of interactions affecting the growth of this concrete cancer.
+3. Every node is just on or off. In a real cell things like p53 or MYC have levels, so a bit of p53 would still slow growth down a little instead of doing nothing at all until it is fully on.
 
 ## Conclusions
 
