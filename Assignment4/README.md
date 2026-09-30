@@ -66,6 +66,10 @@ The final layer scored higher than the first layer in all three trained models. 
 
 We use Welch's t-tests and Holm correction for the six comparisons in 2a and 2b. We do not test differences between layers. The scores are small, and the brain data come from one person, so these results have limits.
 
+#### 3. Dimensionality reduction through t-SNE and its visualisation
+
+We have calculated t-SNE projections onto 2D plane for STG brain dataset, trained models' activations for in each layer (using checkpoint `run0`), and YAMNet embeddings. In general, no model was able to exactly separate the embeddings per category, with YAMNet, inspired and uninspired models showing some same-category neighbourhoods.
+
 ## Use of AI
 
 AI was used to help fix setup errors and draft explanations for Part I. This includes the trained-model and the comparisons in 2a, 2b, and 2c. Some code and text were inspired/corrected by AI. The conversation records this help.
