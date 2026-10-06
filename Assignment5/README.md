@@ -53,3 +53,24 @@ In the Infection model, cell neighbours can change through wall reconfiguration,
 Unlike a model where cell contacts remain unchanged between divisions, the Infection model explicitly controls wall reconfiguration based on the chemical concentration. However, the repository does not establish that all previous models prevented this process.
 
 ### Q6: The plant evolves a defense: cells above a chemical threshold stiffen their walls. Describe in pseudocode where in CellHouseKeeping this would go and what sign of feedback it adds. Do not implement it. Pseudocode for the different sections is enough!
+
+The defense belongs in `CellHouseKeeping`, in the branch for non-pathogen (plant) cells. It goes after the existing line that lowers stiffness, so that it can override it.
+
+chem = min(cell.Chemical(0) / 0.5, 1.2)
+
+if cell.CellType == pathogen:
+    // unchanged: default stiffness, no wall reconfiguration,
+    // grow target area, divide above threshold, produce chemical
+else:  // plant cell
+    // existing behaviour
+    if chem > 0.1:
+        cell.stiffness = 3 - chem
+        cell.allow_wall_reconfiguration = true
+
+    // NEW: defense
+    if chem > DEFENSE_THRESHOLD:
+        cell.stiffness = DEFENSE_STIFFNESS   // e.g. above the default of 3
+        cell.allow_wall_reconfiguration = false  // optional
+    // existing: plant cells degrade the chemical
+
+Sign of feedback: negative feedback. A high chemical level makes the walls stiffer, stiffer walls give a lower diffusion coefficient (Q3), and lower diffusion means the chemical spreads less and the local level falls. The defense therefore counteracts the positive loop from Q3 (chemical -> softer walls-> faster diffusion -> more chemical) and stabilises or limits the infection.
