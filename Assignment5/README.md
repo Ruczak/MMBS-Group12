@@ -46,6 +46,57 @@ Pathogen cells (`CellType == 2`) behave differently. They keep their default sti
 
 ### Q4: Raise and lower rel_cell_div_threshold. How does it change how fast the pathogen population expands? Document two runs.
 
+Pathogen Expansion and Plant Defence
+Effect of rel_cell_div_threshold
+
+Investigated how changing rel_cell_div_threshold affects the rate at which the pathogen population expands. Two runs were compared while keeping the other simulation parameters and initial conditions unchanged.
+
+Run 1 – Lower rel_cell_div_threshold
+
+The value of rel_cell_div_threshold was lowered. With a lower division threshold, pathogen cells are able to divide more easily and more frequently. As a result, the pathogen population expands faster over the same simulation period.
+
+Run 2 – Higher rel_cell_div_threshold
+
+The value of rel_cell_div_threshold was increased. This means pathogen cells need to reach a higher threshold before dividing. Consequently, cell division occurs less frequently and the pathogen population expands more slowly.
+
+Conclusion: Lowering rel_cell_div_threshold increases the rate of pathogen population expansion, while raising it decreases the rate of expansion.
+
+Plant Defence Mechanism
+
+The plant evolves a defence mechanism in which cells exposed to a chemical concentration above a specified threshold stiffen their cell walls. This mechanism would be added to CellHouseKeeping after the chemical concentration has been calculated or updated.
+
+The proposed logic is:
+
+CellHouseKeeping:
+
+    update cell state
+
+    calculate/update chemical concentration
+
+    if cell is a plant cell:
+        if chemical concentration > defence threshold:
+            increase cell wall stiffness
+        else:
+            maintain normal cell wall stiffness
+
+    continue with the remaining cell housekeeping processes
+
+The defence introduces negative feedback into the system. An increase in the pathogen population causes the chemical concentration to increase. Once the concentration exceeds the defence threshold, the plant responds by increasing cell-wall stiffness. The stiffer cell walls make pathogen expansion more difficult, which counteracts the original increase in pathogen population.
+
+The feedback can therefore be represented as:
+
+more pathogen
+      =>
+higher chemical concentration
+      =>
+defence threshold exceeded
+      =>
+increased cell-wall stiffness
+      =>
+reduced pathogen expansion
+
+This defence mechanism is described in pseudocode only and is not implemented.
+
 ### Q5: What is a fundamental difference regarding cell neighbours in this model compared to all other models that you have worked with so far?
 
 In the Infection model, cell neighbours can change through wall reconfiguration, even without cell division. When the pathogen chemical weakens the walls of plant cells, the affected cells allow wall reconfiguration. This can change which cells share a wall and create new neighbouring relationships.
