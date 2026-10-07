@@ -44,6 +44,18 @@ Pathogen cells (`CellType == 2`) behave differently. They keep their default sti
 
 ### Q3: In the model files (Github repo – Models – Infection – infection.cpp9: Read CelltoCellTransport). How is the diffusion coefficient defined? Explain the feedback loop this creates and sketch it: chemical lowers stiffness, lower stiffness raises diffusion, faster diffusion spreads the chemical. Is this positive or negative feedback?
 
+In CelltoCellTransport the diffusion coefficient is measured for every wall between two cells. The function getLengthAndStiffness gets the lenght of the wall  and the average stuffness of the wall elements on both sides. The diffusion coefficient is then:
+
+diffusionCoef = 0.00001 / stiffness
+
+So if the wall is stiffer it lets less chemical through and if it is softer it lets more through. The flux between two cells is length * diffusionCoef * (difference in chemical), so it also depends on the length of the wall and how big the difference in concentration is.
+
+This creates a feedback loop with CellHouseKeeping from Q2. When a plan cell gets more chemical its walls get softer, softer walls give a higher diffusion coefficient, so the chemical moves faster into the neighboring cells. As those cells get more chemical, their walls also get softer and so on.
+
+![Q3 feedback loop sketch](./images/q1/Q3Sketch.png)
+
+This is positive feedback, the loop has two negative links (more chemical gives lower stiffness, and lower stiffness gives higher diffusion), and two negatives cancel out, so overall the loop reinforces itself and makes the infection spread faster through the tissue. It doesnt grow forever though because, the chemical level is capped at 1.2(which means stifness cant go below 1.8) and the plan cells also slowly degrade the chemical
+
 ### Q4: Raise and lower rel_cell_div_threshold. How does it change how fast the pathogen population expands? Document two runs.
 
 Pathogen Expansion and Plant Defence
