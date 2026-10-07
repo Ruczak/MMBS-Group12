@@ -111,9 +111,9 @@ This defence mechanism is described in pseudocode only and is not implemented.
 
 ### Q5: What is a fundamental difference regarding cell neighbours in this model compared to all other models that you have worked with so far?
 
-In the Infection model, cell neighbours can change through wall reconfiguration, even without cell division. When the pathogen chemical weakens the walls of plant cells, the affected cells allow wall reconfiguration. This can change which cells share a wall and create new neighbouring relationships.
+In the Infection model, cells can change their neighbours even without cell division. When the pathogen chemical weakens a plant cell's walls, wall reconfiguration is allowed. This means that cells can lose old neighbours or become connected to new ones.
 
-Unlike a model where cell contacts remain unchanged between divisions, the Infection model explicitly controls wall reconfiguration based on the chemical concentration. However, the repository does not establish that all previous models prevented this process.
+In the other models we worked with, neighbouring relationships mainly changed when cells divided. Here, the structure of the tissue itself can rearrange during the simulation.
 
 ### Q6: The plant evolves a defense: cells above a chemical threshold stiffen their walls. Describe in pseudocode where in CellHouseKeeping this would go and what sign of feedback it adds. Do not implement it. Pseudocode for the different sections is enough!
 
